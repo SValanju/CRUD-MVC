@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row py-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 border p-5">
+            <form method="post" action="/Home/Authenticate">
+                <h3 class="mb-5">Login Page</h3>
+                <div class="form-group">
+                    <label for="usrname">Username :</label>
+                    <input type="text" class="form-control" id="usrname" name="usrName" />
+                </div>
+                <div class="form-group">
+                    <label for="pass">Password :</label>
+                    <input type="password" class="form-control" id="pass" name="password" />
+                </div>
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="reset" class="btn btn-secondary mx-3">Cancel</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <Label class="text-success">@ViewBag.Name</Label>
+                <Label class="text-danger">@ViewBag.Message</Label>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>   
+</div>

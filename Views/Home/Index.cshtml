@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MVC_1.Models.Users>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container my-5">
+
+    <div class="section">
+        <form method="post" action="/Home/AddUser">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="Name">Name</label>
+                    <input type="text" class="form-control" id="Name" name="name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="UsrName">User Name</label>
+                    <input type="text" class="form-control" id="UsrName" name="usrName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email" name="email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="MobNum">Mobile Number</label>
+                    <input type="number" class="form-control" id="MobNum" name="cnum">
+                </div>
+            </div>
+            <div class="my-3">
+                <button type="submit" class="btn btn-primary mx-3">Submit</button>
+                <button type="reset" class="btn btn-secondary mx-3">Cancel</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <Label class="text-success">@ViewBag.Name</Label>
+            <Label class="text-danger">@ViewBag.Message</Label>
+        </div>
+    </div>
+
+    <table class="table table-bordered my-5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.usrName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.cnum)</td>
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-primary" href="/Home/Edit?id=@Html.DisplayFor(modelItem => item.id)">Edit</a>
+                        <a class="btn btn-danger" href="/Home/Delete?id=@Html.DisplayFor(modelItem => item.id)">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
